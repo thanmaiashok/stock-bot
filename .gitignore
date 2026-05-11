@@ -1,0 +1,51 @@
+# Environment — never commit real credentials
+.env
+
+# Database & runtime data
+backend/data/stockbot.db
+backend/data/stockbot.db-shm
+backend/data/stockbot.db-wal
+
+# Logs & PIDs
+backend/logs/*.log
+backend/logs/*.pid
+backend/logs/*.port
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments (venv lives outside repo by design, but just in case)
+.venv/
+venv/
+env/
+.stockbot-venv/
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# HuggingFace cache (large, auto-downloaded on first run)
+.cache/huggingface/
