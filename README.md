@@ -11,10 +11,7 @@
 
 <p align="center"><img src="docs/px3/t-01.svg" width="100%" alt="StockBot continuously screens 18 000+ tickers, runs a four-model ensemble on the top candidates, and executes paper trades when confidence exceeds 70 %."/></p>
 
-<p align="center"><img src="docs/px3/c-01.svg" width="100%" alt="code: Universe (18k+ tickers) │ ├─ Tier 0 — daily EOD fetch (all filtered stocks) ├─ Tier 1 — hourly intraday (top 1 000 active candidates) └─ Tier 2 — 15-min deep an"/></p>
-
-<details>
-<summary><img src="docs/px3/copy-btn.svg" height="40" alt="Copy code: click to open"/></summary>
+<p align="center"><img src="docs/px3/bar-code.svg" width="100%" alt="code code"/></p>
 
 ```
 Universe (18k+ tickers)
@@ -32,8 +29,6 @@ Universe (18k+ tickers)
                           (paper wallet only)
 ```
 
-</details>
-
 <p align="center"><img src="docs/px3/t-02.svg" width="100%" alt="Signal sources - all free, no API keys required except Reddit (optional): Exchange | Source NASDAQ | ftp.nasdaqtrader.com NYSE/AMEX | ftp.nasdaqtrader.com NSE India | archives.nseindia.com BSE India | BSE bhavcopy ZIP (daily) Liquidity filter: price &gt; $0.50 / 10, 30-day avg volume &gt; 100k shares."/></p>
 
 <a id="stack"></a>
@@ -44,10 +39,7 @@ Universe (18k+ tickers)
 <a id="quick-start-one-command"></a>
 <h2><img src="docs/px3/h2-quick-start-one-command.svg" width="100%" alt="Quick start (one command)"/></h2>
 
-<p align="center"><img src="docs/px3/c-02.svg" width="100%" alt="code: git clone https://github.com/thanmaiashok/stock-bot.git cd stock-bot cp .env.example .env # add Reddit creds if you want sentiment (optional) ./start.sh "/></p>
-
-<details>
-<summary><img src="docs/px3/copy-btn.svg" height="40" alt="Copy code: click to open"/></summary>
+<p align="center"><img src="docs/px3/bar-bash.svg" width="100%" alt="bash code"/></p>
 
 ```bash
 git clone https://github.com/thanmaiashok/stock-bot.git
@@ -55,8 +47,6 @@ cd stock-bot
 cp .env.example .env   # add Reddit creds if you want sentiment (optional)
 ./start.sh
 ```
-
-</details>
 
 <p align="center"><img src="docs/px3/t-04.svg" width="100%" alt="start.sh handles everything: checks prerequisites, starts Neo4j via Docker, creates a Python venv, installs deps, and launches backend + frontend. Service | URL UI | http://localhost:5173 API | http://localhost:8000 API docs | http://localhost:8000/docs Neo4j browser | http://localhost:7474 Stop with ./kill.sh."/></p>
 
@@ -73,10 +63,7 @@ cp .env.example .env   # add Reddit creds if you want sentiment (optional)
 <a id="1-seed-the-stock-universe-18k-tickers-2-min"></a>
 <h3><img src="docs/px3/h3-1-seed-the-stock-universe-18k-tickers-2-min.svg" width="100%" alt="1. Seed the stock universe (~18k tickers, ~2 min)"/></h3>
 
-<p align="center"><img src="docs/px3/c-03.svg" width="100%" alt="code: cd backend source ~/.stockbot-venv/bin/activate python -c &quot;from data.universe_manager import refresh_universe; refresh_universe()&quot; "/></p>
-
-<details>
-<summary><img src="docs/px3/copy-btn.svg" height="40" alt="Copy code: click to open"/></summary>
+<p align="center"><img src="docs/px3/bar-bash.svg" width="100%" alt="bash code"/></p>
 
 ```bash
 cd backend
@@ -84,23 +71,16 @@ source ~/.stockbot-venv/bin/activate
 python -c "from data.universe_manager import refresh_universe; refresh_universe()"
 ```
 
-</details>
-
 <p align="center"><img src="docs/px3/t-06.svg" width="100%" alt="This runs automatically every day at 06:00 UTC after the first seed."/></p>
 
 <a id="2-train-the-gnn-optional--pre-trained-weights-included"></a>
 <h3><img src="docs/px3/h3-2-train-the-gnn-optional-pre-trained-weights-included.svg" width="100%" alt="2. Train the GNN (optional — pre-trained weights included)"/></h3>
 
-<p align="center"><img src="docs/px3/c-04.svg" width="100%" alt="code: python -c &quot;from graph.gnn_model import train; train()&quot; "/></p>
-
-<details>
-<summary><img src="docs/px3/copy-btn.svg" height="40" alt="Copy code: click to open"/></summary>
+<p align="center"><img src="docs/px3/bar-bash.svg" width="100%" alt="bash code"/></p>
 
 ```bash
 python -c "from graph.gnn_model import train; train()"
 ```
-
-</details>
 
 <p align="center"><img src="docs/px3/t-07.svg" width="100%" alt="The GNN also trains automatically on startup if no checkpoint exists."/></p>
 
@@ -129,26 +109,18 @@ python -c "from graph.gnn_model import train; train()"
 
 <p align="center"><img src="docs/px3/t-12.svg" width="100%" alt="If you prefer everything in containers:"/></p>
 
-<p align="center"><img src="docs/px3/c-05.svg" width="100%" alt="code: docker-compose up --build "/></p>
-
-<details>
-<summary><img src="docs/px3/copy-btn.svg" height="40" alt="Copy code: click to open"/></summary>
+<p align="center"><img src="docs/px3/bar-bash.svg" width="100%" alt="bash code"/></p>
 
 ```bash
 docker-compose up --build
 ```
-
-</details>
 
 <p align="center"><img src="docs/px3/t-13.svg" width="100%" alt="FinBERT (~400 MB) downloads from HuggingFace on first start and is cached in a Docker volume forever after."/></p>
 
 <a id="project-structure"></a>
 <h2><img src="docs/px3/h2-project-structure.svg" width="100%" alt="Project structure"/></h2>
 
-<p align="center"><img src="docs/px3/c-06.svg" width="100%" alt="code: stock-bot/ ├── backend/ │ ├── api/ # FastAPI routes │ ├── data/ # Fetchers (market, news, SEC, Reddit, macro, …) │ ├── signals/ # Signal engine, technical featu"/></p>
-
-<details>
-<summary><img src="docs/px3/copy-btn.svg" height="40" alt="Copy code: click to open"/></summary>
+<p align="center"><img src="docs/px3/bar-code.svg" width="100%" alt="code code"/></p>
 
 ```
 stock-bot/
@@ -170,8 +142,6 @@ stock-bot/
 ├── kill.sh           # Stop all services
 └── .env.example      # Config template
 ```
-
-</details>
 
 <a id="contributing"></a>
 <h2><img src="docs/px3/h2-contributing.svg" width="100%" alt="Contributing"/></h2>
