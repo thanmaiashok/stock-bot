@@ -1,18 +1,20 @@
-# StockBot
+<p align="center"><img src="docs/flow.svg" alt="Animated StockBot pipeline: Universe → Tier 0 → Tier 1 → Tier 2 → Ensemble → Decide" width="100%"/></p>
 
-> AI-powered paper trading bot covering 18 000+ stocks (US NYSE/NASDAQ + India NSE/BSE).  
-> Zero paid APIs. Runs fully local. Open source.
+<p align="center"><sub>10-second tour: Universe → Tier 0 → Tier 1 → Tier 2 → Ensemble → Decide</sub></p>
 
-![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688)
-![React](https://img.shields.io/badge/React-18-61DAFB)
-![License](https://img.shields.io/badge/license-MIT-green)
+<p align="center"><img src="docs/mc/intro.svg" width="100%" alt="AI-powered paper trading bot covering 18,000+ stocks (US NYSE/NASDAQ and India NSE/BSE). Zero paid APIs. Runs fully local. Open source."/></p>
 
----
+<p align="center"><img src="docs/mc/features.svg" width="100%" alt="Key features"/></p>
 
-## What it does
+<a id="what-it-does"></a>
+<h2><img src="docs/mc/h2-what-it-does.svg" width="100%" alt="What it does"/></h2>
 
-StockBot continuously screens 18 000+ tickers, runs a four-model ensemble on the top candidates, and executes paper trades when confidence exceeds 70 %.
+<p align="center"><img src="docs/mc/t-01.svg" width="100%" alt="StockBot continuously screens 18 000+ tickers, runs a four-model ensemble on the top candidates, and executes paper trades when confidence exceeds 70 %."/></p>
+
+<p align="center"><img src="docs/mc/c-01.svg" width="100%" alt="code: Universe (18k+ tickers) │ ├─ Tier 0 — daily EOD fetch (all filtered stocks) ├─ Tier 1 — hourly intraday (top 1 000 active candidates) └─ Tier 2 — 15-min deep an"/></p>
+
+<details>
+<summary>Copy as text</summary>
 
 ```
 Universe (18k+ tickers)
@@ -30,62 +32,51 @@ Universe (18k+ tickers)
                           (paper wallet only)
 ```
 
-**Signal sources** — all free, no API keys required except Reddit (optional):
+</details>
 
-| Exchange | Source |
-|----------|--------|
-| NASDAQ   | `ftp.nasdaqtrader.com` |
-| NYSE/AMEX | `ftp.nasdaqtrader.com` |
-| NSE India | `archives.nseindia.com` |
-| BSE India | BSE bhavcopy ZIP (daily) |
+<p align="center"><img src="docs/mc/t-02.svg" width="100%" alt="Signal sources - all free, no API keys required except Reddit (optional): Exchange | Source NASDAQ | ftp.nasdaqtrader.com NYSE/AMEX | ftp.nasdaqtrader.com NSE India | archives.nseindia.com BSE India | BSE bhavcopy ZIP (daily) Liquidity filter: price &gt; $0.50 / 10, 30-day avg volume &gt; 100k shares."/></p>
 
-Liquidity filter: price > \$0.50 / ₹10, 30-day avg volume > 100k shares.
+<a id="stack"></a>
+<h2><img src="docs/mc/h2-stack.svg" width="100%" alt="Stack"/></h2>
 
----
+<p align="center"><img src="docs/mc/t-03.svg" width="100%" alt="Layer | Tech Backend API | FastAPI + APScheduler ML models | XGBoost, PyTorch Geometric (GraphSAGE), HuggingFace FinBERT Graph DB | Neo4j 5 Community (Docker) Storage | SQLite (local) Frontend | React 18 + Vite + Tailwind CSS"/></p>
 
-## Stack
+<a id="quick-start-one-command"></a>
+<h2><img src="docs/mc/h2-quick-start-one-command.svg" width="100%" alt="Quick start (one command)"/></h2>
 
-| Layer | Tech |
-|-------|------|
-| Backend API | FastAPI + APScheduler |
-| ML models | XGBoost, PyTorch Geometric (GraphSAGE), HuggingFace FinBERT |
-| Graph DB | Neo4j 5 Community (Docker) |
-| Storage | SQLite (local) |
-| Frontend | React 18 + Vite + Tailwind CSS |
+<p align="center"><img src="docs/mc/c-02.svg" width="100%" alt="code: git clone https://github.com/thanmaiashok/stock-bot.git cd stock-bot cp .env.example .env # add Reddit creds if you want sentiment (optional) ./start.sh "/></p>
 
----
-
-## Quick start (one command)
+<details>
+<summary>Copy as text</summary>
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/stock-bot.git
+git clone https://github.com/thanmaiashok/stock-bot.git
 cd stock-bot
 cp .env.example .env   # add Reddit creds if you want sentiment (optional)
 ./start.sh
 ```
 
-`start.sh` handles everything: checks prerequisites, starts Neo4j via Docker, creates a Python venv, installs deps, and launches backend + frontend.
+</details>
 
-| Service | URL |
-|---------|-----|
-| UI | http://localhost:5173 |
-| API | http://localhost:8000 |
-| API docs | http://localhost:8000/docs |
-| Neo4j browser | http://localhost:7474 |
+<p align="center"><img src="docs/mc/t-04.svg" width="100%" alt="start.sh handles everything: checks prerequisites, starts Neo4j via Docker, creates a Python venv, installs deps, and launches backend + frontend. Service | URL UI | http://localhost:5173 API | http://localhost:8000 API docs | http://localhost:8000/docs Neo4j browser | http://localhost:7474 Stop with ./kill.sh."/></p>
 
-Stop with `./kill.sh`.
+<a id="prerequisites"></a>
+<h3><img src="docs/mc/h3-prerequisites.svg" width="100%" alt="Prerequisites"/></h3>
 
-### Prerequisites
+<p align="center"><img src="docs/mc/t-05.svg" width="100%" alt="Docker Desktop (for Neo4j) Python 3.11 or 3.12 Node 18+"/></p>
 
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/) (for Neo4j)
-- Python 3.11 or 3.12
-- Node 18+
+<p align="center"><a href="https://www.docker.com/products/docker-desktop/"><img src="docs/mc/link-01.svg" height="34" alt="Docker Desktop"/></a></p>
 
----
+<a id="first-run-steps"></a>
+<h2><img src="docs/mc/h2-first-run-steps.svg" width="100%" alt="First-run steps"/></h2>
 
-## First-run steps
+<a id="1-seed-the-stock-universe-18k-tickers-2-min"></a>
+<h3><img src="docs/mc/h3-1-seed-the-stock-universe-18k-tickers-2-min.svg" width="100%" alt="1. Seed the stock universe (~18k tickers, ~2 min)"/></h3>
 
-### 1. Seed the stock universe (~18k tickers, ~2 min)
+<p align="center"><img src="docs/mc/c-03.svg" width="100%" alt="code: cd backend source ~/.stockbot-venv/bin/activate python -c &quot;from data.universe_manager import refresh_universe; refresh_universe()&quot; "/></p>
+
+<details>
+<summary>Copy as text</summary>
 
 ```bash
 cd backend
@@ -93,95 +84,71 @@ source ~/.stockbot-venv/bin/activate
 python -c "from data.universe_manager import refresh_universe; refresh_universe()"
 ```
 
-This runs automatically every day at 06:00 UTC after the first seed.
+</details>
 
-### 2. Train the GNN (optional — pre-trained weights included)
+<p align="center"><img src="docs/mc/t-06.svg" width="100%" alt="This runs automatically every day at 06:00 UTC after the first seed."/></p>
+
+<a id="2-train-the-gnn-optional--pre-trained-weights-included"></a>
+<h3><img src="docs/mc/h3-2-train-the-gnn-optional-pre-trained-weights-included.svg" width="100%" alt="2. Train the GNN (optional — pre-trained weights included)"/></h3>
+
+<p align="center"><img src="docs/mc/c-04.svg" width="100%" alt="code: python -c &quot;from graph.gnn_model import train; train()&quot; "/></p>
+
+<details>
+<summary>Copy as text</summary>
 
 ```bash
 python -c "from graph.gnn_model import train; train()"
 ```
 
-The GNN also trains automatically on startup if no checkpoint exists.
+</details>
 
----
+<p align="center"><img src="docs/mc/t-07.svg" width="100%" alt="The GNN also trains automatically on startup if no checkpoint exists."/></p>
 
-## Environment variables
+<a id="environment-variables"></a>
+<h2><img src="docs/mc/h2-environment-variables.svg" width="100%" alt="Environment variables"/></h2>
 
-Copy `.env.example` to `.env` and fill in:
+<p align="center"><img src="docs/mc/t-08.svg" width="100%" alt="Copy .env.example to .env and fill in: Variable | Required | Description NEO4J_URI | auto | Set by docker-compose NEO4J_USER | auto | Set by docker-compose NEO4J_PASSWORD | auto | Set by docker-compose DATABASE_PATH | auto | SQLite path PAPER_WALLET_USD | no | Starting balance (default 10000) REDDIT_CLIENT_ID | no | Reddit app client ID REDDIT_CLIENT_SECRET | no | Reddit app secret REDDIT_USER_AGENT | no | Reddit user-agent string Reddit credentials are only needed for the sentiment scorer. Create a free app athttps://www.reddit.com/prefs/apps (type: script)."/></p>
 
-| Variable | Required | Description |
-|----------|----------|-------------|
-| `NEO4J_URI` | auto | Set by docker-compose |
-| `NEO4J_USER` | auto | Set by docker-compose |
-| `NEO4J_PASSWORD` | auto | Set by docker-compose |
-| `DATABASE_PATH` | auto | SQLite path |
-| `PAPER_WALLET_USD` | no | Starting balance (default `10000`) |
-| `REDDIT_CLIENT_ID` | no | Reddit app client ID |
-| `REDDIT_CLIENT_SECRET` | no | Reddit app secret |
-| `REDDIT_USER_AGENT` | no | Reddit user-agent string |
+<a id="api-reference"></a>
+<h2><img src="docs/mc/h2-api-reference.svg" width="100%" alt="API reference"/></h2>
 
-Reddit credentials are only needed for the sentiment scorer. Create a free app at  
-https://www.reddit.com/prefs/apps (type: **script**).
+<p align="center"><img src="docs/mc/t-09.svg" width="100%" alt="Method | Endpoint | Description GET | /api/signals | Latest signals for all Tier 2 stocks GET | /api/signals/{ticker} | Signal history for one stock GET | /api/portfolio | Current paper portfolio GET | /api/portfolio/history | Trade history GET | /api/portfolio/stats | Win rate, Sharpe ratio, P&amp;L GET | /api/market/{ticker} | OHLCV + technicals GET | /api/news/{ticker} | News + FinBERT sentiment GET | /api/graph/correlations/{ticker} | Correlated stocks (Neo4j) GET | /api/graph/sector/{sector} | All stocks in a sector GET | /api/universe/stats | Universe size + tier breakdown GET | /api/universe/screener | Filter / search all 18k+ stocks POST | /api/watchlist/add | Force a ticker into Tier 2 GET | /api/health | Scheduler job status Full interactive docs at /docs (Swagger UI) and /redoc."/></p>
 
----
+<a id="frontend-pages"></a>
+<h2><img src="docs/mc/h2-frontend-pages.svg" width="100%" alt="Frontend pages"/></h2>
 
-## API reference
+<p align="center"><img src="docs/mc/t-10.svg" width="100%" alt="Dashboard - top signals, portfolio summary, universe stats Signal Feed - all signals with per-model score breakdown Stock Detail - candlestick chart, technicals, news, correlations Portfolio - positions, P&amp;L chart, full trade history Screener - search / filter all 18k+ stocks Watchlist - manage Tier 2 forced tickers Graph Explorer - interactive Neo4j correlation graph"/></p>
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/api/signals` | Latest signals for all Tier 2 stocks |
-| GET | `/api/signals/{ticker}` | Signal history for one stock |
-| GET | `/api/portfolio` | Current paper portfolio |
-| GET | `/api/portfolio/history` | Trade history |
-| GET | `/api/portfolio/stats` | Win rate, Sharpe ratio, P&L |
-| GET | `/api/market/{ticker}` | OHLCV + technicals |
-| GET | `/api/news/{ticker}` | News + FinBERT sentiment |
-| GET | `/api/graph/correlations/{ticker}` | Correlated stocks (Neo4j) |
-| GET | `/api/graph/sector/{sector}` | All stocks in a sector |
-| GET | `/api/universe/stats` | Universe size + tier breakdown |
-| GET | `/api/universe/screener` | Filter / search all 18k+ stocks |
-| POST | `/api/watchlist/add` | Force a ticker into Tier 2 |
-| GET | `/api/health` | Scheduler job status |
+<a id="paper-trading-rules"></a>
+<h2><img src="docs/mc/h2-paper-trading-rules.svg" width="100%" alt="Paper trading rules"/></h2>
 
-Full interactive docs at `/docs` (Swagger UI) and `/redoc`.
+<p align="center"><img src="docs/mc/t-11.svg" width="100%" alt="Starting wallet: $10 000 (configurable via PAPER_WALLET_USD) Entry: confidence &gt; 70 % Stop loss: 2x ATR below entry Take profit: 3 : 1 risk-reward ratio No real money is ever touched. This is a simulation only."/></p>
 
----
+<a id="full-docker-setup-alternative"></a>
+<h2><img src="docs/mc/h2-full-docker-setup-alternative.svg" width="100%" alt="Full Docker setup (alternative)"/></h2>
 
-## Frontend pages
+<p align="center"><img src="docs/mc/t-12.svg" width="100%" alt="If you prefer everything in containers:"/></p>
 
-- **Dashboard** — top signals, portfolio summary, universe stats
-- **Signal Feed** — all signals with per-model score breakdown
-- **Stock Detail** — candlestick chart, technicals, news, correlations
-- **Portfolio** — positions, P&L chart, full trade history
-- **Screener** — search / filter all 18k+ stocks
-- **Watchlist** — manage Tier 2 forced tickers
-- **Graph Explorer** — interactive Neo4j correlation graph
+<p align="center"><img src="docs/mc/c-05.svg" width="100%" alt="code: docker-compose up --build "/></p>
 
----
-
-## Paper trading rules
-
-- Starting wallet: \$10 000 (configurable via `PAPER_WALLET_USD`)
-- Entry: confidence > 70 %
-- Stop loss: 2× ATR below entry
-- Take profit: 3 : 1 risk-reward ratio
-- **No real money is ever touched.** This is a simulation only.
-
----
-
-## Full Docker setup (alternative)
-
-If you prefer everything in containers:
+<details>
+<summary>Copy as text</summary>
 
 ```bash
 docker-compose up --build
 ```
 
-FinBERT (~400 MB) downloads from HuggingFace on first start and is cached in a Docker volume forever after.
+</details>
 
----
+<p align="center"><img src="docs/mc/t-13.svg" width="100%" alt="FinBERT (~400 MB) downloads from HuggingFace on first start and is cached in a Docker volume forever after."/></p>
 
-## Project structure
+<a id="project-structure"></a>
+<h2><img src="docs/mc/h2-project-structure.svg" width="100%" alt="Project structure"/></h2>
+
+<p align="center"><img src="docs/mc/c-06.svg" width="100%" alt="code: stock-bot/ ├── backend/ │ ├── api/ # FastAPI routes │ ├── data/ # Fetchers (market, news, SEC, Reddit, macro, …) │ ├── signals/ # Signal engine, technical featu"/></p>
+
+<details>
+<summary>Copy as text</summary>
 
 ```
 stock-bot/
@@ -204,23 +171,18 @@ stock-bot/
 └── .env.example      # Config template
 ```
 
----
+</details>
 
-## Contributing
+<a id="contributing"></a>
+<h2><img src="docs/mc/h2-contributing.svg" width="100%" alt="Contributing"/></h2>
 
-Pull requests welcome. Please:
+<p align="center"><img src="docs/mc/t-14.svg" width="100%" alt="Pull requests welcome. Please: Fork the repo and create a feature branch. Keep changes focused - one feature / fix per PR. Run pip install -r backend/requirements.txt and make sure the backend starts cleanly. Open a PR with a clear description of what changed and why. For larger changes, open an issue first to discuss the approach."/></p>
 
-1. Fork the repo and create a feature branch.
-2. Keep changes focused — one feature / fix per PR.
-3. Run `pip install -r backend/requirements.txt` and make sure the backend starts cleanly.
-4. Open a PR with a clear description of what changed and why.
+<a id="license"></a>
+<h2><img src="docs/mc/h2-license.svg" width="100%" alt="License"/></h2>
 
-For larger changes, open an issue first to discuss the approach.
+<p align="center"><img src="docs/mc/t-15.svg" width="100%" alt="MIT - see LICENSE. Disclaimer: StockBot is a research and educational tool. It trades paper money only. Nothing here is financial advice."/></p>
 
----
+<p align="center"><a href="LICENSE"><img src="docs/mc/link-02.svg" height="34" alt="LICENSE"/></a></p>
 
-## License
-
-MIT — see [LICENSE](LICENSE).
-
-> **Disclaimer:** StockBot is a research and educational tool. It trades paper money only. Nothing here is financial advice.
+<p align="center"><a href="https://github.com/thanmaiashok"><img src="docs/mc/footer.svg" width="100%" alt="Built by Thanmai A, founder of FoxynAI"/></a></p>
